@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  dollar_exchange_rate_argentine_banks:
+    build: .
+    ports:
+      - 5001:8005
+    volumes:
+      - .:/dollar_exchange_rate_argentine_banks
