@@ -16,66 +16,76 @@ Web Scraping dollar values of Argentine Banks
 
 # Pre Requirements 📋
 
+* **Docker**
 * **Docker-compose**
 
-# Running Docker 🐳
-```
-docker-compose build .
-docker-compose up
+# Running Application 🐳
+```bash
+sudo make up-d
 ```
 # Testing 🧪
 
-The tests in **LOCAL** were done with postman from the url: http://localhost:5001
+The tests in **LOCAL** were done with postman from the url: http://localhost:5000
 
 **Endpoints:**
 
 1) GET → ***/status***
 2) GET → ***/banks***
 
-**[RESPONSE]**
+# 1) GET → /status
+
+**[ REQUEST ]**
+```yaml
+url: http://localhost:5000/status
 ```
-1) GET → http://localhost:5001/status
-```
+
+**[ RESPONSE ]**
 ```yaml
 {
     "message": "'Dollar-exchange-rate-argentine-banks' API works!",
     "status_code": 200,
-    "version": "0.1"
+    "version": "2.0"
 }
 ```
 
-**[RESPONSE]**
-```
-2) GET → http://localhost:5001/banks
-```
+**[ REQUEST ]**
 ```yaml
-[
-    {
-        "0.Banco": "BANCO-NACION",
-        "1.Fecha": "Fri, 31 Dec 2021 16:12:41 GMT",
-        "2.Compra ($)": 101.75,
-        "3.Venta ($)": 107.75,
-        "4.Valor de compra parcial ($)": 140.08,
-        "5.Valor de compra final ($)": 177.79
-    },
-    {
-        "0.Banco": "BANCO-CIUDAD",
-        "1.Fecha": "Fri, 31 Dec 2021 16:12:41 GMT",
-        "2.Compra ($)": 101.75,
-        "3.Venta ($)": 107.75,
-        "4.Valor de compra parcial ($)": 140.08,
-        "5.Valor de compra final ($)": 177.79
-    },
-    {
-        "0.Banco": "BANCO-PROVINCIA",
-        "1.Fecha": "Fri, 31 Dec 2021 16:12:42 GMT",
-        "2.Compra ($)": 101.75,
-        "3.Venta ($)": 107.75,
-        "4.Valor de compra parcial ($)": 140.08,
-        "5.Valor de compra final ($)": 177.79
-    },
-    ...
-]
+url: http://localhost:5000/banks
+```
+
+**[ RESPONSE ]**
+```yaml
+{
+    "datetime": "2023-03-19 21:17:22",
+    "banks": [
+        {
+            "1.Banco": "Banco-nacion",
+            "2.Compra ($)": 202.0,
+            "3.Venta ($)": 210.0,
+            "4.Valor de compra parcial ($)": 273.0,
+            "5.Valor de compra final ($)": 346.5,
+            "6.Ultima actualizacion": "viernes, 17 de marzo de 2023 17:59 Argentina"
+        },
+        {
+            "1.Banco": "Banco-ciudad",
+            "2.Compra ($)": 202.0,
+            "3.Venta ($)": 210.0,
+            "4.Valor de compra parcial ($)": 273.0,
+            "5.Valor de compra final ($)": 346.5,
+            "6.Ultima actualizacion": "viernes, 17 de marzo de 2023 17:59 Argentina"
+        },
+        {
+            "1.Banco": "Banco-provincia",
+            "2.Compra ($)": 202.0,
+            "3.Venta ($)": 210.0,
+            "4.Valor de compra parcial ($)": 273.0,
+            "5.Valor de compra final ($)": 346.5,
+            "6.Ultima actualizacion": "viernes, 17 de marzo de 2023 17:59 Argentina"
+        },
+        ...
+    ]
+
+}
 ```
 
 # Author 🖋
