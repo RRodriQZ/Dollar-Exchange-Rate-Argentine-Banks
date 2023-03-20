@@ -1,15 +1,15 @@
-FROM python:3.9-slim
+FROM python:3.10-slim
 
-RUN apt-get update
+RUN apt-get update && apt-get install -y gcc
 
-WORKDIR /dollar_exchange_rate_argentine_banks
+WORKDIR /app
 
-COPY . /dollar_exchange_rate_argentine_banks
+COPY . /app
 
-RUN pip install poetry
+RUN python -m pip install --upgrade pip
 
-RUN poetry export -f requirements.txt --output requirements.txt
+RUN pip install "poetry==1.3.2"
+
+RUN poetry export --without-hashes -f requirements.txt --output requirements.txt
 
 RUN pip install -r requirements.txt
-
-CMD ["python3", "application.py"]
