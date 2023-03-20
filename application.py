@@ -1,9 +1,9 @@
-from app.settings import APP_HOST, APP_PORT
-from app import view as application
+from app.settings import APP_PORT
+from app import views as application
 
 
 def main() -> None:
-    application.app.run(debug=True, host=APP_HOST, port=APP_PORT)
+    application.app.run(port=APP_PORT)
 
 
 if __name__ == "__main__":
