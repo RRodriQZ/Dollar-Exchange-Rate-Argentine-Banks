@@ -30,7 +30,7 @@ The tests in **LOCAL** were done with postman from the url: http://localhost:500
 **Endpoints:**
 
 1) GET → ***/status***
-2) GET → ***/banks***
+2) GET → ***/api/v1/banks***
 
 # 1) GET → /status
 
@@ -48,9 +48,11 @@ url: http://localhost:5000/status
 }
 ```
 
+# 2) GET → /api/v1/banks
+
 **[ REQUEST ]**
 ```yaml
-url: http://localhost:5000/banks
+url: http://localhost:5000/api/v1/banks
 ```
 
 **[ RESPONSE ]**
