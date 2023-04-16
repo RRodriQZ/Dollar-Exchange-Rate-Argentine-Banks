@@ -1,5 +1,5 @@
-from app.constants import ARGENTINE_BANKS
-from app.client import BanksClient
+from .constants import ARGENTINE_BANKS
+from .client import BanksClient
 from datetime import datetime
 from bs4 import BeautifulSoup
 from pytz import timezone
@@ -32,7 +32,7 @@ class ArgentineBanksServices:
                 - Sell (cash)
         """
         try:
-            VALUES: list = list()
+            VALUE_LIST: list = list()
 
             for i in range(0, 4):
                 dollar_value: str = (
@@ -40,6 +40,7 @@ class ArgentineBanksServices:
                     .find_all("td", {"class": "colCompraVenta"})[i]
                     .text
                 )
+
                 format_value: str = (
                     dollar_value.replace(" ", "")
                     .split("\r\n")[1]
@@ -47,9 +48,9 @@ class ArgentineBanksServices:
                     .replace(",", ".")
                 )
                 value: float = round(float(format_value), 2)
-                VALUES.append(value)
+                VALUE_LIST.append(value)
 
-            return VALUES
+            return VALUE_LIST
 
         except:
             return [None, None, None, None]
@@ -63,13 +64,12 @@ class ArgentineBanksServices:
         :return: A datetime.
         """
         try:
-            DATE: str = (
+            return (
                 response.find("table")
                 .find("td", {"class": "colFecha"})
                 .find("abbr", {"class": "timeago date"})
                 .text
             )
-            return DATE
 
         except:
             return None
@@ -82,7 +82,7 @@ class ArgentineBanksServices:
         :return: A list of dictionaries.
         """
 
-        BANKS_INFO: list = list()
+        BANKS_INFO_LIST: list = list()
 
         for name_bank, url in ARGENTINE_BANKS.items():
 
@@ -100,6 +100,6 @@ class ArgentineBanksServices:
                 "5.Valor de compra final ($)": scrapping_values[3],
                 "6.Ultima actualizacion": scrapping_date,
             }
-            BANKS_INFO.append(bank_info)
+            BANKS_INFO_LIST.append(bank_info)
 
-        return BANKS_INFO
+        return BANKS_INFO_LIST

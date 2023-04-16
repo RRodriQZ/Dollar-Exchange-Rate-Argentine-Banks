@@ -1,7 +1,3 @@
-# General constants
-VERSION_API: str = "2.0"
-
-# Banks url
 ARGENTINE_BANKS: dict = {
     "nacion": "https://www.infodolar.com/cotizacion-dolar-entidad-banco-nacion.aspx",
     "ciudad": "https://www.infodolar.com/cotizacion-dolar-entidad-banco-ciudad.aspx",
